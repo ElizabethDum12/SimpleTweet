@@ -4,12 +4,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_margin="5dp"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:divider="?android:dividerHorizontal"
+    android:showDividers="middle">
 
     <ImageView
         android:id="@+id/ivProfileImage"
         android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_height="48dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_marginStart="0dp"
@@ -29,10 +31,10 @@
     <TextView
         android:id="@+id/tvBody"
         android:layout_width="wrap_content"
-        android:layout_height="29dp"
+        android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="56dp"
-        android:layout_marginTop="22dp"
+        android:layout_marginStart="55dp"
+        android:layout_marginTop="23dp"
         android:text="TextView" />
 </RelativeLayout>
