@@ -15,6 +15,8 @@ import org.json.JSONObject;
 
 import cz.msebera.android.httpclient.Header;
 
+// CREATE BY GLORIA
+
 public class ComposeActivity extends AppCompatActivity {
 
     ImageView ivProfile;

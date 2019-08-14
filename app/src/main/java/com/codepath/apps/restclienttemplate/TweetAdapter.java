@@ -41,11 +41,10 @@ public class TweetAdapter extends RecyclerView.Adapter<TweetAdapter.ViewHolder> 
     public void onBindViewHolder(ViewHolder holder, int position) {
         // get the data according to position
         Tweet tweet = mTweets.get(position);
-
         // populate the views according to this data
        holder.tvUsername.setText(tweet.user.name);
        holder.tvBody.setText(tweet.body);
-
+        //Glide
         Glide.with(context).load(tweet.user.profileImageUrl).into(holder.ivProfileImage);
     }
 
@@ -53,6 +52,17 @@ public class TweetAdapter extends RecyclerView.Adapter<TweetAdapter.ViewHolder> 
     public int getItemCount() {
         return mTweets.size();
     }
+
+    //clean all elements of the recycler
+    public void clear(){
+        mTweets.clear();
+        notifyDataSetChanged();
+        }
+        //add a list of items
+     public void addTweets(List<Tweet> tweetList){
+        mTweets.addAll(tweetList);
+        notifyDataSetChanged();
+     }
 
     //create ViewHolder class
     public static class ViewHolder extends RecyclerView.ViewHolder{
