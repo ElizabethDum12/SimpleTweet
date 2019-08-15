@@ -7,6 +7,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.codepath.apps.restclienttemplate.models.Tweet;
 import com.loopj.android.http.JsonHttpResponseHandler;
@@ -19,14 +20,11 @@ import cz.msebera.android.httpclient.Header;
 
 public class ComposeActivity extends AppCompatActivity {
 
-    ImageView ivProfile;
-    TextView tvUsername;
-    EditText etTweet;
-    Button btnCancel;
-    Button btnPost;
-    TextView tvCounter;
-    TwitterClient client;
-    String imageUrl;
+    public static final int MAX_TWEET_LENGTH = 280;
+
+    private EditText etCompose;
+    private Button btnTweet;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,20 +32,33 @@ public class ComposeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_compose);
 
         // initializes instance variables
-        ivProfile = this.findViewById(R.id.ivProfile);
-        tvUsername = this.findViewById(R.id.tvUsername);
-        etTweet = this.findViewById(R.id.etTweet);
-        btnCancel = this.findViewById(R.id.btnCancel);
-        btnPost = this.findViewById(R.id.btnPost);
-        client = TwitterApp.getRestClient(this);
-    }
+        etCompose = findViewById(R.id.etCompose);
+        btnTweet= findViewById(R.id.btnTweet);
 
-    public void onCancel(View view) {
-    }
-
-    // method called when post button is clicked
-    public void composeTweet(android.view.View view) {
-        // grabs body of tweet
+        //set  the onClick listener on button
+        btnTweet.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String tweetContent = etCompose.getText().toString();
+                //TODO :error handling
+                if (tweetContent.isEmpty()){
+                    Toast.makeText(ComposeActivity.this, "Your Tweet is empty", Toast.LENGTH_LONG).show();
+                    return;
+                }
+                if (tweetContent.length()> MAX_TWEET_LENGTH){
+                    Toast.makeText(ComposeActivity.this, "Your Tweet is too long", Toast.LENGTH_LONG).show();
+                    return;
+                }
+                Toast.makeText(ComposeActivity.this, tweetContent, Toast.LENGTH_LONG).show();
 
             }
-        }
+        });
+
+
+        //make the api call to twitter to publish the content in edit text
+
+    }
+
+
+}
+
