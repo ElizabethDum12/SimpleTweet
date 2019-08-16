@@ -4,11 +4,13 @@ import android.text.format.DateUtils;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.parceler.Parcel;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Locale;
 
+@Parcel
 public class Tweet {
 
     //List out all the attributes
@@ -17,6 +19,9 @@ public class Tweet {
     public User user;
     public String createAt;
     public String relativeDate;
+
+    //empty constructor needed by the parceler library
+    public Tweet(){}
 
 
     //deserialize the JSON
@@ -32,8 +37,7 @@ public class Tweet {
         return tweet;
     }
 
-    // empty constructor needed for parcel
-    public Tweet(){}
+
 
     // getRelativeTimeAgo("Mon Apr 01 21:16:23 +0000 2014");
     public String getRelativeTimeAgo(String rawJsonDate) {
